@@ -10,8 +10,8 @@ volume : real;
 begin
 number := 6;
 counter := number;
-factorial := 1
-while counter > 0 do begin
+factorial := 1;
+while ( counter > 0 ) do begin
 number := number * counter;
 counter := counter - 1 ;
 end;

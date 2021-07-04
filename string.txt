@@ -11,7 +11,7 @@ begin
 number := 6;
 counter := number;
 factorial := 1;
-while ( counter > 0 ) do begin
+while ( counter  > 0 ) do begin
 number := number * counter;
 counter := counter - 1 ;
 end;

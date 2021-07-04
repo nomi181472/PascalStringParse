@@ -1,1 +1,1 @@
-"# PascalStringParse" 
+"# PascalStringParse (Lexcial analyzer)" 

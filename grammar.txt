@@ -1,0 +1,46 @@
+{program} :: keyword("program") id(_) sym(";") {var_part} {block} sym(".")
+{var_part} :: keyword("var") {var_list}
+{var_part} :: {}
+{var_list} :: {var_list} id(_) sym(":") {type} sym(";")
+{var_list} :: id(_) sym(":") {type} sym(";")
+{type} :: keyword("real")
+{type} :: keyword("integer")
+{block} :: keyword("begin") {stmt_list} keyword("end")
+{stmt_list} :: {stmt_list} {stmt} sym(";")
+{stmt_list} :: {}
+{stmt} :: id(_) sym(":=") {expr}
+{stmt} :: keyword("if") {expr} keyword("then") {block}
+{stmt} :: keyword("if") {expr} keyword("then") {block} keyword("else") {block}
+{stmt} :: keyword("while") {expr} keyword("do") {block}
+{stmt} :: keyword("repeat") {block} keyword("until") {expr}
+{stmt} :: keyword("readln") sym("(") id(_) sym(")")
+{stmt} :: keyword("write") sym("(") {expr} sym(")")
+{stmt} :: keyword("writeln") sym("(") {expr} sym(")")
+{stmt} :: keyword("write") sym("(") stringConst(_) sym(")")
+{stmt} :: keyword("writeln") sym("(") stringConst(_) sym(")")
+{expr} :: {expr} sym("+") {term}
+{expr} :: {expr} sym("-") {term}
+{expr} :: {expr} keyword("or") {term}
+{expr} :: {term}
+{term} :: {term} sym("*") {factor}
+{term} :: {term} sym("/") {factor}
+{term} :: {term} keyword("div") {factor}
+{term} :: {term} keyword("mod") {factor}
+{term} :: {term} keyword("and") {factor}
+{term} :: {factor}
+{factor} :: intConst(_)
+{factor} :: realConst(_)
+{factor} :: id(_)
+{factor} :: keyword("true")
+{factor} :: keyword("false")
+{factor} :: sym("(") {expr} sym(")")
+{factor} :: sym("(") {expr} {relop} {expr} sym(")")
+{factor} :: keyword("not") sym("(") {expr} sym(")")
+{factor} :: keyword("trunc") sym("(") {expr} sym(")")
+{factor} :: keyword("real") sym("(") {expr} sym(")")
+{relop} :: sym("=")
+{relop} :: sym(">")
+{relop} :: sym("<")
+{relop} :: sym("<=")
+{relop} :: sym(">=")
+{relop} :: sym("<>")
